@@ -1,30 +1,15 @@
 package campaigntest;
 
 import java.io.IOException;
-import java.time.Duration;
-import java.util.HashMap;
-import java.util.Map;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.safari.SafariDriver;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
 import genericutilities.BaseClass;
-import genericutilities.ExcelFileUtility;
-import genericutilities.JavaUtility;
-import genericutilities.PropertyFileUtility;
-import genericutilities.WebDriverUtility;
 import objectrepository.CampaignsPage;
 import objectrepository.CreateCampaignPage;
 import objectrepository.HomePage;
-import objectrepository.LoginPage;
 
 @Listeners(genericutilities.ListenerImplementation.class)
 class CreateCampaignTest extends BaseClass {
@@ -51,7 +36,11 @@ class CreateCampaignTest extends BaseClass {
 		String msg = toastMsg.getText();
 		homepage.getCloseToastMsg().click();
 		Assert.assertTrue(msg.contains("Successfully Added"));
+
 		System.out.println("How are you");
+
+		System.out.println("Hi");
+
 
 	}
 
