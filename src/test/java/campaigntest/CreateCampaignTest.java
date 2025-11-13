@@ -38,7 +38,6 @@ class CreateCampaignTest extends BaseClass {
 		homepage.getCloseToastMsg().click();
 		Assert.assertTrue(msg.contains("Successfully Added"));
 
-		System.out.println("How are you");
 
 		System.out.println("Hi");
 
