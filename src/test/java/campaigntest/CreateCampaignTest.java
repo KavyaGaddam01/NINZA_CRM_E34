@@ -15,12 +15,13 @@ import objectrepository.HomePage;
 class CreateCampaignTest extends BaseClass {
 
 	@Test(groups = {"smoke","regression"})
-	public void createCampaignWithMandatoryFieldsTest() throws IOException {
+	public void createCampaignWithMandatoryFieldsTest() throws IOException, InterruptedException {
 
 		String CAMPAIGN_NAME = eLib.readDataFromExcelFile("Campaigns", 1, 2);
 		String TARGET_SIZE = eLib.readDataFromExcelFile("Campaigns", 1, 3);
 
 		// Create Campaign with mandatory fields
+		Thread.sleep(2000);
 		CampaignsPage campaignsPage = new CampaignsPage(driver);
 		campaignsPage.getAddCCreateCampaignBtn().click();
 		CreateCampaignPage createCampaignPage = new CreateCampaignPage(driver);
@@ -45,20 +46,23 @@ class CreateCampaignTest extends BaseClass {
 	}
 
 	@Test(groups = "regression")
-	public void createCampaignWithStatusTest() throws IOException {
+	public void createCampaignWithStatusTest() throws IOException, InterruptedException {
 
 		String CAMPAIGN_NAME = eLib.readDataFromExcelFile("Campaigns", 4, 2);
 		String TARGET_SIZE = eLib.readDataFromExcelFile("Campaigns", 4, 3);
 		String STATUS = eLib.readDataFromExcelFile("Campaigns", 4, 4);
 
 		// Create Campaign with mandatory fields
-		driver.findElement(By.xpath("//span[text()='Create Campaign']")).click();
-		driver.findElement(By.name("campaignName")).sendKeys(CAMPAIGN_NAME);
-		driver.findElement(By.name("campaignStatus")).sendKeys(STATUS);
-		WebElement targetSize = driver.findElement(By.name("targetSize"));
-		targetSize.clear();
-		targetSize.sendKeys(TARGET_SIZE);
-		driver.findElement(By.xpath("//button[text()='Create Campaign']")).click();
+		
+		Thread.sleep(2000);
+		CampaignsPage campaignsPage = new CampaignsPage(driver);
+		campaignsPage.getAddCCreateCampaignBtn().click();
+		CreateCampaignPage createCampaignPage = new CreateCampaignPage(driver);
+		createCampaignPage.getCampaignNameTF().sendKeys(CAMPAIGN_NAME);
+		createCampaignPage.getTargetSizeTF().clear();
+		createCampaignPage.getTargetSizeTF().sendKeys(TARGET_SIZE);
+		createCampaignPage.getCampaignStatusTF().sendKeys(STATUS);
+		createCampaignPage.getCreateCampaignBtn().click();
 
 		// Verify the toast msg
 		HomePage homepage = new HomePage(driver);
@@ -73,12 +77,13 @@ class CreateCampaignTest extends BaseClass {
 	}
 
 	@Test(groups = "regression")
-	public void createCampaignWithExpectedCloseDateTest() throws IOException {
+	public void createCampaignWithExpectedCloseDateTest() throws IOException, InterruptedException {
 		
 		String CAMPAIGN_NAME = eLib.readDataFromExcelFile("Campaigns", 7, 2);
 		String TARGET_SIZE = eLib.readDataFromExcelFile("Campaigns", 7, 3);
 
 		// Create Campaign with mandatory fields
+		Thread.sleep(2000);
 		CampaignsPage campaignsPage = new CampaignsPage(driver);
 		campaignsPage.getAddCCreateCampaignBtn().click();
 		CreateCampaignPage createCampaignPage = new CreateCampaignPage(driver);
